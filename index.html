@@ -1,0 +1,498 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epistemic Insight</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="Anonymous"></script>
+    <style>
+        .search {
+            display: grid;
+            grid-template-columns: 1fr 100fr
+        }
+        .buttons {
+            display: grid;
+            width: 100%;
+            grid-template-columns: 1fr 5fr;
+            margin-top: 20px;
+        }
+        #chat-area {
+            /* margin: 0 auto; */
+            width: 100%;
+            height: auto;
+            overflow: auto;
+            background-color: transparent;
+            font-size: 24px;
+            border-radius: 10px
+        }
+        .input {            
+            width: 100%;
+            font-size: 24px;
+        }
+        .submit-area{
+            margin: 20px auto;
+            width: 50%;
+        }       
+        .box {
+            width: 96%;
+            padding: 10px 10px;
+            background-color: #C4DBFE;   
+            white-space: pre-wrap;
+        }
+        .loadbox {
+            width: 96%;
+            padding: 10px 10px;
+            background-color: #c4f7fe;   
+            white-space: pre-wrap;
+        }
+        .answer {
+            background-color: rgb(165, 255, 173);
+            font-size: 24px;
+        }
+
+        button {
+            background-color: #004089;
+            color: white;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .wheel {
+            position: relative;
+        }
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            width:940px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            background-color: beige;
+            width: 940px;
+        }
+
+        .dropdown:hover .dropbtn {
+            width:940px;
+            background-color: #3e8e41;
+        }
+        #stickyNote {
+            position: absolute;
+            top: 330px;
+            left: 300px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineOne {
+            position: absolute;
+            top: 140px;
+            left: 480px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineTwo {
+            position: absolute;
+            top: 320px;
+            left: 570px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineThree {
+            position: absolute;
+            top: 450px;
+            left: 570px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineFour {
+            position: absolute;
+            top: 620px;
+            left: 480px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineFive {
+            position: absolute;
+            top: 680px;
+            left: 320px;
+            width: 150px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineSix {
+            position: absolute;
+            top: 620px;
+            left: 110px;
+            width: 190px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineSeven {
+            position: absolute;
+            top: 450px;
+            left: 20px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineEight {
+            position: absolute;
+            top: 320px;
+            left: 20px;
+            width: 200px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineNine {
+            position: absolute;
+            top: 140px;
+            left: 110px;
+            width: 190px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        #disaplineTen {
+            position: absolute;
+            top: 80px;
+            left: 320px;
+            width: 150px;
+            color: black;
+            font-size: 24px;
+            text-align: center;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #2ebdff;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: circle;
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            cursor: pointer;
+        }
+        #button8{
+            background-color: #fddcb6;
+            color: black;
+            height:40px;
+            border: 2px solid darkblue;
+        }
+
+        #button11{
+            background-color: #fddcb6;
+            color: black;
+            height:40px;
+            border: 2px solid darkblue;
+        }
+        #button14{
+            background-color: palevioletred;
+            color: black;
+            height:40px;
+            border: 2px solid darkblue;
+        }
+        #button17{
+            background-color: #fddcb6;
+            color: black;
+            height:40px;
+            border: 2px solid darkblue;
+        }
+        .note{
+            font-size:20px;
+            width: 100%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .noteB{
+            font-size:25px;
+            font-weight: bold;
+        }
+        .btn{
+            left: 200px;
+        }
+        .textarea{
+            background: transparent;
+            background-image: url("Border.png");
+            width: 798px;
+            height: 88px;
+            padding: 7px;
+            font-size: larger;
+            border: 0px;
+            overflow: hidden;
+            resize: none;
+        }
+        .heading{
+            text-align: center;
+            text-indent: -140px;
+            color: red;
+            -webkit-text-stroke: 1px;
+            -webkit-text-stroke-color: #000000;
+            font-size: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .topOfPic{
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 30fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr;
+            width:100%;
+        }
+        .oval-thought-border {
+            width: 880px;
+            position:relative;
+            padding:70px 30px;
+            margin-left: 0px!important;
+            margin-right: 0px!important;
+            margin:1em auto 200px;
+            border:10px solid #c81e2b;
+            text-align:center;
+            color:#333;
+            background:#fff;
+            -webkit-border-top-left-radius:240px 140px;
+            -webkit-border-top-right-radius:240px 140px;
+            -webkit-border-bottom-right-radius:240px 140px;
+            -webkit-border-bottom-left-radius:240px 140px;
+            -moz-border-radius:240px / 140px;
+            border-radius:240px / 140px;
+        }
+            /* creates the larger circle */
+        .oval-thought-border:before {
+            content:"";
+            position:absolute;
+            z-index:10;
+            bottom:-40px;
+            right:180px;
+            width:50px;
+            height:50px;
+            border:10px solid #c81e2b;
+            background:#fff;
+            /* css3 */
+            -webkit-border-radius:50px;
+            -moz-border-radius:50px;
+            border-radius:50px;
+            /* reduce the damage in FF3.0 */
+            display:block;
+        }
+
+            /* creates the smaller circle */
+        .oval-thought-border:after {
+            content:"";
+            position:absolute;
+            z-index:10;
+            bottom:-60px;
+            right:130px;
+            width:25px;
+            height:25px;
+            border:10px solid #c81e2b;
+            background:#fff;
+            /* css3 */
+            -webkit-border-radius:25px;
+            -moz-border-radius:25px;
+            border-radius:25px;
+            /* reduce the damage in FF3.0 */
+            display:block;
+        }
+        .thought {
+            background-color:#fff;
+            padding:20px;
+            border-radius:30px;
+            /* min-width:40px;
+            max-width:220px; */
+            width: 920px;
+            min-height:40px;
+            margin:40px;
+            position:relative;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+        }
+            .thought:before,
+            .thought:after {
+            content:"";
+            background-color:#fff;
+            border-radius:50%;
+            display:block;
+            position:absolute;
+            z-index:-1;
+        }
+        .thought:before {
+            width:44px;
+            height:44px;
+            top:-12px;
+            left:28px;
+            box-shadow:-50px 30px 0 -12px #fff;
+        }
+        .thought:after {
+            bottom:-10px;
+            right:26px;
+            width:30px;
+            height:30px;
+            box-shadow:40px -34px 0 0 #fff,
+                        -28px -6px 0 -2px #fff,
+                        -24px 17px 0 -6px #fff,
+                        -5px 25px 0 -10px #fff;
+        
+        }
+        .header {
+            display: block;
+            margin-bottom: 0px;
+            width: 100%;
+        }
+        .header2 {
+            display: block; 
+            margin-bottom: 80px;
+            width: 100%;
+        }
+        .version {
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 220px;
+            width: 180px;
+        }
+    </style>
+</head>
+<body style="background-color: skyblue;">
+    <div id="wheel" class="tabcontent">
+        <div>
+            <img src="EpIn.png">
+        </div>
+        <img id="header" class="header" src="logo.png">
+        <div class="search">
+            <div class="wheel">
+                <canvas id="myCanvas" width="800" height="790"></canvas>
+            <b id="stickyNote">The Big Question</b>
+            <b id="disaplineOne" onclick="Disapline(1)"></b>
+            <b id="disaplineTwo" onclick="Disapline(2)"></b>
+            <b id="disaplineThree" onclick="Disapline(3)"></b>
+            <b id="disaplineFour" onclick="Disapline(4)"></b>
+            <b id="disaplineFive" onclick="Disapline(5)"></b>
+            <b id="disaplineSix" onclick="Disapline(6)"></b>
+            <b id="disaplineSeven" onclick="Disapline(7)"></b>
+            <b id="disaplineEight" onclick="Disapline(8)"></b>
+            <b id="disaplineNine" onclick="Disapline(9)"></b>
+            <b id="disaplineTen" onclick="Disapline(0)"></b>
+        </div>
+            <div class="input">
+                <div class="topOfPic">
+                    <!-- <img id="version" class="version" src="TS button.png" onclick="changeVersion()"> -->
+                    <!-- <button id="button8" onclick="button8()">8-10</button>
+                    <br>
+                    <button id="button11" onclick="button11()">11-12</button>
+                    <br>
+                    <button id="button14" onclick="button14()">13-15</button>
+                    <br>
+                    <button id="button17" onclick="button17()">16+</button> -->
+                </div>
+                <p class="Note" id="firstNote">You can use the Discipline Wheel to investigate how different disciplines address the same question. 
+                    Choose a Question from the dropdown list below, then click on three or four disciplines you want to explore.
+                </p>
+                <br>
+                <div class="inputQuestions">
+                    <select id="inputQuestion" style="font-size: larger;">
+                    <option value="none"></option>
+                    <option value="chocolate">Why do we love chocolate?</option>
+                    <option value="war">What causes war?</option>
+                    <option value="poverty">How do we reduce poverty?</option>
+                    <option value="sunset">What is a sunset?</option>
+                    <option value="Mars">Will we ever live on Mars?</option>
+                    <option value="alive">What does it mean to be alive?</option>
+                    <option value="cities">Can we build healthier cities?</option>
+                    <option value="time">What happens if we invent time travel?</option>
+                    </select>
+                </div>
+                <div class="Note" id="click-wheel">Click the disciplines you want by clicking them in the Discipline Wheel, then press submit.</div>
+                <!-- <button id="editButton" onclick="EditMode()">Edit Mode</button> -->
+                <P></P>
+                <!-- <div class="Note" id="submit-form">Press submit and wait for the program to respond. And watch out, the AI doesn't have a teacher's sense and the suggestions it puts together can miss essential information such as to check for allergies.</div> -->
+                <P></P>
+                <div class="Note" id="testVersion"></div>
+                    <div class="buttons">
+                        <button id="btn" onclick="generateInsightWithBubbles()">Submit</button>
+                        <br>
+                    </div>
+                    <p></p>
+                <div id="chat-area"></div>
+                <textarea id="textInput" rows="10" cols="50">Question: Why do we love chocolate?
+    Discipline1: Engineering and Computing
+    Discipline1Answer: Preferred questions: How can we optimize the production process of chocolate to meet consumer demand? What technological advancements can enhance the quality of chocolate products?
+    Methods: Analysing data on consumer preferences, conducting experiments to improve chocolate-making machinery, using computer simulations to model the production process.
+    Good answer: A good answer in this discipline would provide practical solutions for improving the efficiency and quality of chocolate production through engineering and technology.
+    Discipline2: Natural Science
+    Discipline2Answer: Preferred questions: What are the environmental factors contributing to poverty? How can we improve agricultural practices to increase food security for impoverished communities?
+    Methods: Data collection, experimentation, analysis of cause and effect relationships.
+    Good answer: A good answer in this discipline would involve the development of sustainable practices that increase resilience to environmental challenges faced by those in poverty.
+    Discipline3: Mathematics
+    Discipline3Answer: Preferred questions: What statistical methods can be used to identify trends in poverty levels? How can we optimize resource allocation to effectively reduce poverty
+    Discipline4: Tell me about the wheel
+    Discipline4Answer: You can customise the answers in the wheel using the Questions folder found in the files where you installed this program, The Disciplines are layed out with the words Discipline[number] and then Discipline[number]Answer on the next line, the Discipline[number] tells the program what to put in the wheel, the Discipline[number]Answer tells the program what to output.
+    Discipline5: Theology
+    Discipline5Answer: Methods: Study of religious texts, ethical reflection, community engagement.
+    Discipline6: User Friendly Version
+    Discipline6Answer: I want to make this more user friendly, at the moment there is a box where you can type things and it will save a file into the Questions folder, however I want to create a more streamlined version of this so teachers don't have to go into the files to find out
+    Discipline7: Demo
+    Discipline7Answer: Thank you for trying this demo version. It has taken a long time to get to this point
+    Discipline8: Multiple Questions
+    Discipline8Answer: If you copy the file called "MyFile" in the questions folder and paste a new version, multiple questions will show up! If you have different disciplines for your questions they will automatically change on the wheel.
+    Discipline9: Blank
+    Discipline9Answer: You can leave disciplines blank, but it is not supported at the moment and if you select the discipline, it will still output a speach bubble even if it has nothing to say.
+    Discipline10: Sunset
+    Discipline10Answer: What spiritual or symbolic meanings can be associated with a sunset? How do different creatures interpret the significance of a sunset</textarea><br>
+                <button id="saveBtn">Save to File</button>
+                <div>
+                    <p></p>
+                    <img src="canterbury.png" style="position: relative; margin-top: 90px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="Anonymous"></script>
+<script src="renderer.js"></script>
+
+</body>
+</html>

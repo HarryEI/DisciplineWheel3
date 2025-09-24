@@ -1,0 +1,25 @@
+Question: Why do we love chocolate?
+Discipline1: Engineering and Computing
+Discipline1Answer: Preferred questions: How can we optimize the production process of chocolate to meet consumer demand? What technological advancements can enhance the quality of chocolate products?
+Methods: Analysing data on consumer preferences, conducting experiments to improve chocolate-making machinery, using computer simulations to model the production process.
+Good answer: A good answer in this discipline would provide practical solutions for improving the efficiency and quality of chocolate production through engineering and technology.
+Discipline2: Natural Science
+Discipline2Answer: Preferred questions: What are the environmental factors contributing to poverty? How can we improve agricultural practices to increase food security for impoverished communities?
+Methods: Data collection, experimentation, analysis of cause and effect relationships.
+Good answer: A good answer in this discipline would involve the development of sustainable practices that increase resilience to environmental challenges faced by those in poverty.
+Discipline3: Mathematics
+Discipline3Answer: Preferred questions: What statistical methods can be used to identify trends in poverty levels? How can we optimize resource allocation to effectively reduce poverty
+Discipline4: Tell me about the wheel
+Discipline4Answer: You can customise the answers in the wheel using the Questions folder found in the files where you installed this program, The Disciplines are layed out with the words Discipline[number] and then Discipline[number]Answer on the next line, the Discipline[number] tells the program what to put in the wheel, the Discipline[number]Answer tells the program what to output.
+Discipline5: Theology
+Discipline5Answer: Methods: Study of religious texts, ethical reflection, community engagement.
+Discipline6: User Friendly Version
+Discipline6Answer: I want to make this more user friendly, at the moment there is a box where you can type things and it will save a file into the Questions folder, however I want to create a more streamlined version of this so teachers don't have to go into the files to find out
+Discipline7: Demo
+Discipline7Answer: Thank you for trying this demo version. It has taken a long time to get to this point
+Discipline8: Multiple Questions
+Discipline8Answer: If you copy the file called "MyFile" in the questions folder and paste a new version, multiple questions will show up! If you have different disciplines for your questions they will automatically change on the wheel.
+Discipline9: Blank
+Discipline9Answer: You can leave disciplines blank, but it is not supported at the moment and if you select the discipline, it will still output a speach bubble even if it has nothing to say.
+Discipline10: Sunset
+Discipline10Answer: What spiritual or symbolic meanings can be associated with a sunset? How do different creatures interpret the significance of a sunset
